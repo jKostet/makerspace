@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Wish</th>
+      <th>Done</th>
+    </tr>
+    {% for wish in wishes %}
+    <tr>
+      <td>{{ wish.name }}</td>
+      <td>{{ wish.done }}</td>
+      <td>
+        <form method="POST" action="{{ url_for('wishes_set_done', wish_id=wish.id) }}">
+          <input type="submit" value="Approve!"/>
+        </form>
+     </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

@@ -11,3 +11,8 @@ Functions:
 * Managing Inventory (add, remove, update description)
 * Browsing equipment Wish List
 * Adding items to Wish List
+
+
+
+## Installing required libs
+`pip install -r requirements.txt`
