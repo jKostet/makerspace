@@ -1,4 +1,4 @@
-# Page for Kumpula Think Company Makerspace (+ pyhton tsoha19)
+# Page for Kumpula Think Company Makerspace (+ python tsoha19)
 
 Heroku @ https://kumpulamakerspace.herokuapp.com/
 
@@ -11,7 +11,13 @@ Functions:
 * Managing Inventory (add, remove, update description)
 * Browsing equipment Wish List
 * Adding items to Wish List
+* Approving Wishes/Requests
+* Marking Wishes as fulfilled
+* Posting updates to front page (updates as objects or just html edit via js etc?)
 
+## Documentation
+* [Use cases](https://github.com/jKostet/makerspace/blob/master/documentation/doc.md)
+* [Database Graph](https://github.com/jKostet/makerspace/blob/master/documentation/db.png)
 
 
 ## Installing required libs
