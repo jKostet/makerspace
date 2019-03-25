@@ -137,3 +137,6 @@ dmypy.json
 # ignore databases
 wishes.db
 items.db
+
+# ignore dev notes
+notes.md
