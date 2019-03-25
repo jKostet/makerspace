@@ -10,8 +10,13 @@ def wishes_form():
 
 @app.route("/wishes/", methods=["POST"])
 def wishes_create():
-    print("ADDING TO Wishes.db" + request.form.get("name"))
     form = WishForm(request.form) # Wish(request.form.get("name"))
+
+    if not form.validate():
+        print("INVALID INPUT")
+        return render_template("wishes/new.html", form = form)
+
+    print("ADDING TO Wishes.db" + request.form.get("name"))
     w = Wish(form.name.data)
     w.approved = form.approved.data
     w.fulfilled = form.fulfilled.data
