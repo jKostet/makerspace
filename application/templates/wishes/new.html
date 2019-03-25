@@ -2,7 +2,35 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('wishes_create') }}">
-  <input type="text" name="name"/>
-  <input type="submit" value="Request equipment"/>
+  <table>
+      <tr>
+      	<td>
+      	  {{ form.name.label }}
+      	</td>
+      	<td>
+      	  {{ form.name }}
+      	</td>
+      </tr>
+      <tr>
+      	<td>
+      	  {{ form.approved.label }}
+      	</td>
+      	<td>
+      	  {{ form.approved }}
+      	</td>
+      </tr>
+      <tr>
+      	<td>
+      	  {{ form.fulfilled.label }}
+      	</td>
+      	<td>
+      	  {{ form.fulfilled }}
+      	</td>
+      </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Add to Makerspace Wish-list"/>
+      </td>
+    </tr>
 </form>
 {% endblock %}

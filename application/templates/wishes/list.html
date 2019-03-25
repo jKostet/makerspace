@@ -4,17 +4,20 @@
   <table>
     <tr>
       <th>Wish</th>
-      <th>Done</th>
+      <th>Approved</th>
+      <!--th>Fulfilled</th-->
     </tr>
     {% for wish in wishes %}
     <tr>
       <td>{{ wish.name }}</td>
-      <td>{{ wish.done }}</td>
+      <td>{{ wish.approved }}</td>
+      <!--td>{{ wish.fulfilled }}</td-->
       <td>
-        <form method="POST" action="{{ url_for('wishes_set_done', wish_id=wish.id) }}">
+        <form method="POST" action="{{ url_for('wishes_set_approved', wish_id=wish.id) }}">
           <input type="submit" value="Approve!"/>
         </form>
-     </td>
+      </td>
+      <!-- TODO: add button to mark wishes as fulfilled -->
     </tr>
     {% endfor %}
   </table>
