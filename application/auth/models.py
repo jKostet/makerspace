@@ -3,7 +3,7 @@ from application import db
 class User(db.Model):
 
     __tablename__ = "account"
-  
+
     id = db.Column(db.Integer, primary_key=True)
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
@@ -14,11 +14,14 @@ class User(db.Model):
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
 
+    # wishes by the username
+    wishes = db.relationship("Wish", backref='account', lazy=True)
+
     def __init__(self, name, username, password):
         self.name = name
         self.username = username
         self.password = password
-  
+
     def get_id(self):
         return self.id
 

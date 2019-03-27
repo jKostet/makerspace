@@ -20,6 +20,7 @@ def wishes_create():
     w = Wish(form.name.data)
     w.approved = form.approved.data
     w.fulfilled = form.fulfilled.data
+    w.account_id = current_user.id
 
     db.session().add(w)
     db.session().commit()
@@ -44,7 +45,3 @@ def wishes_set_approved(wish_id):
 
     return redirect(url_for("wishes_index"))
 """
-
-@app.route("/wishes/", methods=["GET"])
-def wishes_index():
-    return render_template("wishes/list.html", wishes = Wish.query.all())

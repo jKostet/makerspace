@@ -13,6 +13,9 @@ class Wish(db.Model):
     approved = db.Column(db.Boolean, nullable=False)
     fulfilled = db.Column(db.Boolean, nullable=False)
 
+    # whose wish
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+
     def __init__(self, name):
         self.name = name
         self.approved = False
