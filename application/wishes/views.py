@@ -1,14 +1,21 @@
 from flask import render_template, request, redirect, url_for
+from flask_login import login_required, current_user
 
 from application import app, db
 from application.wishes.models import Wish
 from application.wishes.forms import WishForm
 
+@app.route("/wishes/", methods=["GET"])
+def wishes_index():
+    return render_template("wishes/list.html", wishes = Wish.query.all())
+
 @app.route("/wishes/new/")
+@login_required
 def wishes_form():
     return render_template("wishes/new.html", form = WishForm())
 
 @app.route("/wishes/", methods=["POST"])
+@login_required
 def wishes_create():
     form = WishForm(request.form) # Wish(request.form.get("name"))
 
@@ -28,6 +35,7 @@ def wishes_create():
     return redirect(url_for("wishes_index"))
 
 @app.route("/wishes/<wish_id>/", methods=["POST"])
+@login_required
 def wishes_set_approved(wish_id):
     w = Wish.query.get(wish_id)
     w.approved = True
