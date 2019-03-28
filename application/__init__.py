@@ -4,12 +4,17 @@ from flask import Flask
 app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
-# TODO: Rename wishes.db to makerspace.db etc,
-# as we probably need just one database with more tables
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///wishes.db"
 
-# SQLAlchemy print all SQL requests
-app.config["SQLALCHEMY_ECHO"] = True
+import os
+
+if os.environ.get("HEROKU"):
+    # TODO: Rename wishes.db to makerspace.db etc,
+    # as we probably need just one database with more tables
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+else:
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///wishes.db"
+    # SQLAlchemy print all SQL requests
+    app.config["SQLALCHEMY_ECHO"] = True
 
 # Create db object
 db = SQLAlchemy(app)
@@ -38,6 +43,8 @@ login_manager.login_message = "Please login to use this functionality"
 def load_user(user_id):
     return User.query.get(user_id)
 
-
-# Create TABLES
-db.create_all()
+try:
+    # Create TABLES
+    db.create_all()
+except:
+    pass
