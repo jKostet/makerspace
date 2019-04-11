@@ -1,0 +1,19 @@
+.navbar-logo {
+  font-size: 24px;
+  line-height: 16pt;
+  color: white;
+
+  margin-right: 10%;
+}
+
+.navbar-logo > span {
+  font-size: 16px;
+}
+
+.navbar {
+  background-color: #fed300;
+}
+
+.nav-link {
+  color: white !important;
+}
