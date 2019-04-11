@@ -24,10 +24,14 @@ def wishes_create():
         return render_template("wishes/new.html", form = form)
 
     print("ADDING TO Wishes.db" + request.form.get("name"))
-    w = Wish(form.name.data)
+    w = Wish(form.name.data, form.details.data)
+
+    w.account_id = current_user.id
+
+    w.details = form.details.data
+
     w.approved = form.approved.data
     w.fulfilled = form.fulfilled.data
-    w.account_id = current_user.id
 
     db.session().add(w)
     db.session().commit()
@@ -53,3 +57,10 @@ def wishes_set_approved(wish_id):
 
     return redirect(url_for("wishes_index"))
 """
+
+@app.route("/wishes/<wish_id>/", methods=["GET"])
+def single_wish_page(wish_id):
+    w = Wish.query.get(wish_id)
+    return render_template("wishes/wish.html", wish = w, user = current_user)
+
+

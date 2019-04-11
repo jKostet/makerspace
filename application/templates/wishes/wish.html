@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <div class="wish">
+    <span class="wishTitle">
+      {{ wish.name }}
+    </span>
+    <br>
+    <span class="wishUser">
+      {{ wish.account_id }}
+    </span>
+    <span class="wishestatus">
+      {{ wish.approved }}
+    </span>
+    <br>
+    <span class="wishDescription" style="height: 30px !important">
+      {{ wish.details }}
+    </span>
+    <!--td>{{ wish.fulfilled }}</td-->
+      <form method="POST" action="{{ url_for('wishes_set_approved', wish_id=wish.id) }}">
+        <input type="submit" value="Approve!"/>
+      </form>
+    <!-- TODO: add button to mark wishes as fulfilled -->
+  </div>
+  {% if current_user.id == wish.account_id %}
+    <a href="{{url_for('wishes_edit', wish_id=wish_id) }}">Edit wish</a>
+  {% endif %}
+{% endblock %}

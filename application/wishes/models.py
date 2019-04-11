@@ -11,13 +11,16 @@ class Wish(Base):
     #onupdate=db.func.current_timestamp())
 
     name = db.Column(db.String(144), nullable=False)
+    details = db.Column(db.String(300), nullable=False)
+
     approved = db.Column(db.Boolean, nullable=False)
     fulfilled = db.Column(db.Boolean, nullable=False)
 
     # whose wish
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
 
-    def __init__(self, name):
+    def __init__(self, name, details):
         self.name = name
+        self.details = details
         self.approved = False
         self.fulfilled = False
