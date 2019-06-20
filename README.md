@@ -22,6 +22,13 @@ Functions:
 * [Use cases](https://github.com/jKostet/makerspace/blob/master/documentation/doc.md)
 * [Database Graph](https://github.com/jKostet/makerspace/blob/master/documentation/db.png)
 
+# Setup and Install
+
+## Setup Python Virtual Environment
+`apt-get install python3-pip`
+`pip3 install virtualenv`
+`python3 -m venv venv`
+`source venv/bin/activate`
 
 ## Installing required libs
 `pip install -r requirements.txt`
