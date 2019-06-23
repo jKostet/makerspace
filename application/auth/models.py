@@ -12,7 +12,7 @@ class User(Base):
 
     # name is a display name instead of the (login) username.
     name = db.Column(db.String(144), nullable=False)
-    username = db.Column(db.String(144), nullable=False)
+    username = db.Column(db.String(144), nullable=False, unique=True)
     password = db.Column(db.String(144), nullable=False)
 
     # wishes by the username
