@@ -12,7 +12,7 @@ if os.environ.get("HEROKU"):
     # as we probably need just one database with more tables
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 else:
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///wishes.db"
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///makerspace.db"
     # SQLAlchemy print all SQL requests
     app.config["SQLALCHEMY_ECHO"] = True
 

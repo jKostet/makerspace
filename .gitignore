@@ -135,8 +135,7 @@ dmypy.json
 .pyre/
 
 # ignore databases
-wishes.db
-items.db
+makerspace.db
 
 # ignore dev notes
 notes.md
