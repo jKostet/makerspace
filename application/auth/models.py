@@ -14,6 +14,7 @@ class User(Base):
     name = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False, unique=True)
     password = db.Column(db.String(144), nullable=False)
+    admin = db.Column(db.Boolean, nullable=True, default=False)
 
     # wishes by the username
     wishes = db.relationship("Wish", backref='account', lazy=True)

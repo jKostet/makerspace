@@ -38,13 +38,18 @@ def auth_register():
     #form.username
 
     if not form.validate():
+        # how to flash?
+        flash("hello")
         return render_template("auth/register.html", form = form)
 
     new_user = User(form.name.data, form.username.data, form.password.data)
+
+    if form.username.data == "admin":
+        new_user.admin = True
+
     db.session().add(new_user)
     db.session().commit()
 
-    # if form.username == "admin": makeAdmin
     login_user(new_user)
     return redirect(url_for("auth_login"))
 
