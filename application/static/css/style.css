@@ -17,3 +17,38 @@
 .nav-link {
   color: white !important;
 }
+
+.wish {
+  border: 3px outset;
+  margin: 15px 30% 0px 15%;
+  max-width: 70vw;
+}
+
+.wishTitle {
+  font-size: 150%;
+}
+
+.wishDescription {
+  border: 3px inset;
+  padding: 10px 10px 10px 10px;
+  width: 90%;
+  text-overflow: ellipsis;
+  margin: 10px 10px 10px 10px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.upvote {
+  background-color: white;
+  margin: 10px 10px 10px 10px;
+  border: 1px solid silver;
+  min-width: 40px;
+  min-height: 40px;
+  background-image: url(/static/upvote.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}

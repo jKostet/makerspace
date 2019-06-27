@@ -11,6 +11,12 @@
       	  {{ form.name }}
       	</td>
         <td>
+          {{ form.details.label }}
+        </td>
+        <td>
+          {{ form.details }}
+        </td>
+        <td>
           <ul>
             {% for error in form.name.errors %}
             <li>{{ error }}</li>

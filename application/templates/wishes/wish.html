@@ -2,12 +2,15 @@
 
 {% block body %}
   <div class="wish">
+    <button class="upvote"></button>
     <span class="wishTitle">
       {{ wish.name }}
     </span>
     <br>
     <span class="wishUser">
-      {{ wish.account_id }}
+      Posted by:
+      {{ wishAuthor.name }}
+      <br>
     </span>
     <span class="wishestatus">
       {{ wish.approved }}
