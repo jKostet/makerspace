@@ -16,6 +16,8 @@ class Wish(Base):
     approved = db.Column(db.Boolean, nullable=False)
     fulfilled = db.Column(db.Boolean, nullable=False)
 
+    upvotes = db.Column(db.Integer, nullable=True)
+
     # whose wish
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
 
@@ -24,3 +26,4 @@ class Wish(Base):
         self.details = details
         self.approved = False
         self.fulfilled = False
+        self.upvotes = 0

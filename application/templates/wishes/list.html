@@ -4,25 +4,41 @@
   {% if wishes|length == 0 %}
   <p>No wishes. <a href="{{ url_for('wishes_form')}}">Would you like to create one? </a></p>
   {% else %}
+
   <table>
-    <tr>
-      <th>Wish</th>
-      <th>Approved</th>
-      <!--th>Fulfilled</th-->
-    </tr>
     {% for wish in wishes %}
-    <tr>
-      <td>{{ wish.name }}</td>
-      <td>{{ wish.approved }}</td>
+    <div class="wish">
+      <span class="upvotes">
+        {{ wish.upvotes }}
+      </span>
+      <form method="POST" action="{{ url_for('wishes_upvote', wish_id=wish.id) }}">
+        <input class="upvote" type="submit" value=""/>
+      </form>
+      <span class="wishTitle">
+        <a href="{{ url_for('single_wish_page', wish_id=wish.id) }}" > {{ wish.name }} </a>
+      </span>
+      <br>
+      <span class="wishUser">
+        Posted by: fixthis
+        <!-- TODO: match this to all wishes???  wishAuthor.name }}-->
+        <!-- get author by wish.account_id -->
+        <br>
+      </span>
+      <span class="wishestatus">
+        Approved:
+        {{ wish.approved }}
+      </span>
+      <br>
+      <span class="wishDescription">
+        {{ wish.details }}
+      </span>
       <!--td>{{ wish.fulfilled }}</td-->
-      <td>
         <form method="POST" action="{{ url_for('wishes_set_approved', wish_id=wish.id) }}">
           <input type="submit" value="Approve!"/>
         </form>
-      </td>
       <!-- TODO: add button to mark wishes as fulfilled -->
-    </tr>
+    </div>
     {% endfor %}
-  </table>
+    </table>
   {% endif %}
 {% endblock %}
