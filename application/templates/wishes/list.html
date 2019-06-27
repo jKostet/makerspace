@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 
 {% block body %}
+  {% if wishes|length == 0 %}
+  <p>No wishes. <a href="{{ url_for('wishes_form')}}">Would you like to create one? </a></p>
+  {% else %}
   <table>
     <tr>
       <th>Wish</th>
@@ -21,4 +24,5 @@
     </tr>
     {% endfor %}
   </table>
+  {% endif %}
 {% endblock %}
