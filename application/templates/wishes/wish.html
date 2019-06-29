@@ -1,16 +1,6 @@
 {% extends "layout.html" %}
 
 {% block body %}
-
-<div class="card">
-  <h5 class="card-header">Featured</h5>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
   <div class="wish card">
     <span class="card-header wishTitle">
       <button class="upvote"></button>
@@ -31,13 +21,16 @@
         {% endif %}
       </span>
       <!--td>{{ wish.fulfilled }}</td-->
-      <form method="POST" action="{{ url_for('wishes_set_approved', wish_id=wish.id) }}">
-        <input class="btn" type="submit" value="Approve!"/>
-      </form>
+      <span class="wishButtons">
+        <form method="POST" action="{{ url_for('wishes_set_approved', wish_id=wish.id) }}">
+          <input class="btn" type="submit" value="Approve!"/>
+        </form>
+
+        {% if current_user.id == wish.account_id or current_user.admin == 1 %}
+          <a class="btn btn-primary" href="{{url_for('wishes_edit', wish_id=wish_id) }}">Edit wish</a>
+        {% endif %}
+      </span>
       <!-- TODO: add button to mark wishes as fulfilled -->
     </span>
   </div>
-  {% if current_user.id == wish.account_id or current_user.admin == 1 %}
-    <a href="{{url_for('wishes_edit', wish_id=wish_id) }}">Edit wish</a>
-  {% endif %}
 {% endblock %}

@@ -51,6 +51,14 @@ button {
   outline: none;
 }
 
+.wishButtons {
+  display: flex;
+}
+
+.wishButtons > .btn, .wishButtons > form > input{
+  margin-right: 5px;
+}
+
 .upvote {
   background-color: white;
   /* margin: 10px 10px 10px 10px;
