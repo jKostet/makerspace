@@ -7,36 +7,33 @@
 
   <table>
     {% for wish in wishes %}
-    <div class="wish">
-      <span class="upvotes">
-        {{ wish.upvotes }}
-      </span>
-      <form method="POST" action="{{ url_for('wishes_upvote', wish_id=wish.id) }}">
-        <input class="upvote" type="submit" value=""/>
-      </form>
-      <span class="wishTitle">
+    <div class="wish card">
+      <span class="card-header wishTitle">
+        <button class="upvote"></button>
         <a href="{{ url_for('single_wish_page', wish_id=wish.id) }}" > {{ wish.name }} </a>
+        <!--{{ wish.name }}-->
       </span>
-      <br>
-      <span class="wishUser">
-        Posted by: fixthis
-        <!-- TODO: match this to all wishes???  wishAuthor.name }}-->
-        <!-- get author by wish.account_id -->
-        <br>
-      </span>
-      <span class="wishestatus">
-        Approved:
-        {{ wish.approved }}
-      </span>
-      <br>
-      <span class="wishDescription">
-        {{ wish.details }}
-      </span>
-      <!--td>{{ wish.fulfilled }}</td-->
+      <span class="card-body">
+        <span class="card-text">
+          {{ wish.details }}
+        </span>
+        <br><br>
+        <span class="wishUser">
+          Posted by: fixthis
+          <!-- TODO: match this to all wishes???  wishAuthor.name }}-->
+          <!-- get author by wish.account_id -->
+        </span>
+        <span class="wishStatus">
+          {% if wish.approved %}
+          , Approved!
+          {% endif %}
+        </span>
+        <!--td>{{ wish.fulfilled }}</td-->
         <form method="POST" action="{{ url_for('wishes_set_approved', wish_id=wish.id) }}">
-          <input type="submit" value="Approve!"/>
+          <input class="btn" type="submit" value="Approve!"/>
         </form>
-      <!-- TODO: add button to mark wishes as fulfilled -->
+        <!-- TODO: add button to mark wishes as fulfilled -->
+      </span>
     </div>
     {% endfor %}
     </table>

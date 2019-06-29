@@ -24,6 +24,15 @@
   max-width: 70vw;
 }
 
+.wishStatus {
+  color: lime;
+  font-size: 90%;
+}
+
+.wishUser {
+  font-size: 90%;
+}
+
 .wishTitle {
   font-size: 150%;
 }
@@ -44,7 +53,10 @@ button {
 
 .upvote {
   background-color: white;
-  margin: 10px 10px 10px 10px;
+  /* margin: 10px 10px 10px 10px;
+  */
+  margin-top: 6px;
+
   border: 1px solid silver;
   min-width: 40px;
   min-height: 40px;
