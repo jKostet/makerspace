@@ -43,7 +43,9 @@
               {% endif %}
             {% endif %}
 
-            <a class="btn btn-primary" href="{{url_for('wishes_edit', wish_id=wish_id) }}">Edit wish</a>
+            <form method="GET" action="{{ url_for('wishes_edit', wish_id=wish.id) }}">
+              <input class="btn btn-primary" type="submit" value="Edit"/>
+            </form>
 
             <form method="POST" action="{{ url_for('wishes_delete', wish_id=wish.id) }}">
               <input class="btn btn-danger" type="submit" value="DELETE"/>

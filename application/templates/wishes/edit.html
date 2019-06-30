@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<form method="POST" action="{{ url_for('wishes_create') }}">
+<form method="POST" action="{{ url_for('wishes_edit_save', wish_id=wish.id) }}">
   <table>
       <tr>
       	<td>

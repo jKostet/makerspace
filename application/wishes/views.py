@@ -102,26 +102,36 @@ def single_wish_page(wish_id):
     return render_template("wishes/wish.html", wish = w, user = current_user, wishAuthor = wishAuthor)
 
 
-@app.route("/wishes/<wish_id>/edit/", methods=["GET"])
-def wishes_edit(wish_id):
-    return render_template("wishes/edit.html", wish = Wish.query.get(wish_id), form = WishForm())
-
-@app.route("/wishes/<wish_id>/edit/", methods=["POST"])
+@app.route("/wishes/edit/<wish_id>/", methods=["GET"]) #,"POST"])
 @login_required
-def wish_ad_modify(wish_id):
-    wish = wish.query.get(wish_id)
-    form = wishForm(request.form)
-    if not form.validate():
-        return render_template("wishes/edit_ad.html", wish = wish.query.get(wish_id), form = form)
+def wishes_edit(wish_id):
+#    if flask.request.method == 'POST':
 
-    wish.name = form.name.data
-    wish.price = form.price.data
+    w = Wish.query.get(wish_id)
+    f = WishForm()
+
+    f.name.data = w.name
+    f.details.data = w.details
+
+    return render_template("wishes/edit.html", wish = w, form = f)
+
+
+@app.route("/wishes/edit/<wish_id>/", methods=["POST"])
+@login_required
+def wishes_edit_save(wish_id):
+    w = Wish.query.get(wish_id)
+    f = WishForm(request.form)
+    if not f.validate():
+        return render_template("wishes/edit.html", wish = w, form = f)
+
+    w.name = f.name.data
+    w.details = f.details.data
 
     db.session().commit()
 
     return redirect(url_for("wishes_index"))
 
-@app.route("/wishes/<wish_id>/edit/delete/", methods=["POST"])
+@app.route("/wishes/delete/<wish_id>/", methods=["POST"])
 @login_required
 def wishes_delete(wish_id):
     w = Wish.query.get(wish_id)
