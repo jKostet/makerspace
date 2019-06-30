@@ -8,14 +8,18 @@ As a visitor
  SELECT * FROM Wish;
  
  ~~~~
+ - [x] I can view a single Wish.
+ ~~~~SQL
+ SELECT * FROM Wish WHERE Wish.id = wish_id;
  
+ ~~~~
  - [x] I can register a new account.
-  ~~~~SQL
+ ~~~~SQL
  INSERT INTO Account (name, username, password, admin) VALUES (form.name.data, form.username.data, form.password.data, False);
  
  ~~~~
  - [x] I can log in.
-  ~~~~SQL
+ ~~~~SQL
  SELECT * FROM Account WHERE Account.username = form.username.data AND Account.password = form.password.data; ;
  
  ~~~~
@@ -23,18 +27,55 @@ As a visitor
 
 As an authenticated (registered & logged in) user
  - [x] I can add equipment/event/any requests to the Wish-list.
+ ~~~~SQL
+ INSERT INTO Wish (name, details) VALUES (form.name.data, form.username.data, form.password.data, False);
+ 
+ ~~~~
  - [x] I can add details to the wishes beyond just a title.
+ ~~~~SQL
+ INSERT INTO Wish (name, details) VALUES (form.name.data, form.username.data, form.password.data, False);
+ 
+ ~~~~
  - [x] I can edit my Wishes.
+ ~~~~SQL
+ INSERT INTO Wish (name, details) VALUES (form.name.data, form.username.data, form.password.data, False);
+ 
+ ~~~~
  - [x] I can delete my Wishes.
+  ~~~~SQL
+ DELETE FROM Wish WHERE Wish.account_id = current_user.id AND Wish.id = wish_id;
+
+ ~~~~
  - [ ] I can edit my display name.
  - [ ] I can change my password.
  - [ ] I can delete my account.
 
 As an admin
   - [x] I can approve requests.
+  ~~~~SQL
+ INSERT INTO Wish (approved) WHERE Wish.id = wish_id VALUES (True);
+ 
+  ~~~~
+  - [x] I can create Wishes that are already approved / fulfilled.
+  ~~~~SQL
+  INSERT INTO Wish (name, details, approved, fulfulled) VALUES (form.name.data, form.details.data, False/True, False/True);
+ 
+  ~~~~
   - [x] I can undo the approval.
+  ~~~~SQL
+ INSERT INTO Wish (approved) WHERE Wish.id = wish_id VALUES (False);
+ 
+  ~~~~
   - [x] I can edit any Wish.
+  ~~~~SQL
+  INSERT INTO Wish (name, details, approved, fulfulled) VALUES (form.name.data, form.details.data, False/True, False/True);
+ 
+  ~~~~
   - [x] I can delete any Wish.
+  ~~~~SQL
+  DELETE FROM Wish WHERE Wish.id = wish_id;
+
+  ~~~~
   - [/] I can mark approved requests as fulfilled.
   - [ ] I can post updates to the front page.
 
