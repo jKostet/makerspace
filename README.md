@@ -1,8 +1,11 @@
 # Page for Kumpula Think Company Makerspace (+ python tsoha19)
 
 Heroku @ https://kumpulamakerspace.herokuapp.com/
+
 Test User for TSOHA,
+
 	username: hello
+
 	password: world
 
 ## Makerspace Wish List (+ Future Inventory & Updates page)
@@ -33,8 +36,11 @@ Potential future additions:
 
 ## Setup Python Virtual Environment
 `apt-get install python3-pip`
+
 `pip3 install virtualenv`
+
 `python3 -m venv venv`
+
 `source venv/bin/activate`
 
 ## Installing required libs
@@ -49,5 +55,7 @@ Open the app in browser, and register a new account with username `admin`, you'l
 # Deploying to heroku
 Create a Heroku account, install Heroku CLI and clone the repo.
 `heroku login`
+
 `heroku apps:create APPNAME/URL`
+
 `git push heroku master`
