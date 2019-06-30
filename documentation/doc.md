@@ -4,8 +4,21 @@
 
 As a visitor
  - [x] I can browse the Wish-list.
+ ~~~~SQL
+ SELECT * FROM Wish;
+ 
+ ~~~~
+ 
  - [x] I can register a new account.
+  ~~~~SQL
+ INSERT INTO Account (name, username, password, admin) VALUES (form.name.data, form.username.data, form.password.data, False);
+ 
+ ~~~~
  - [x] I can log in.
+  ~~~~SQL
+ SELECT * FROM Account WHERE Account.username = form.username.data AND Account.password = form.password.data; ;
+ 
+ ~~~~
  - [ ] I can see news at the home page.
 
 As an authenticated (registered & logged in) user
