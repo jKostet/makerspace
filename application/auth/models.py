@@ -35,3 +35,7 @@ class User(Base):
 
     def is_authenticated(self):
         return True
+
+    def get_wishes_by_user(uid):
+        stmt = text("SELECT Wish.id FROM Wish WHERE Wish.account_id = " + uid)
+        res = db.execute(smtm)
