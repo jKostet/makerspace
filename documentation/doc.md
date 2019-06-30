@@ -58,7 +58,7 @@ As an admin
   ~~~~
   - [x] I can create Wishes that are already approved / fulfilled.
   ~~~~SQL
-  INSERT INTO Wish (name, details, approved, fulfulled) VALUES (form.name.data, form.details.data, False/True, False/True);
+  INSERT INTO Wish (name, details, approved, fulfilled) VALUES (form.name.data, form.details.data, False/True, False/True);
  
   ~~~~
   - [x] I can undo the approval.
@@ -68,7 +68,7 @@ As an admin
   ~~~~
   - [x] I can edit any Wish.
   ~~~~SQL
-  INSERT INTO Wish (name, details, approved, fulfulled) VALUES (form.name.data, form.details.data, False/True, False/True);
+  INSERT INTO Wish (name, details, approved, fulfilled) VALUES (form.name.data, form.details.data, False/True, False/True);
  
   ~~~~
   - [x] I can delete any Wish.
