@@ -58,29 +58,32 @@ def wishes_upvote(wish_id):
     wishAuthor = User.query.get(w.account_id)
     return render_template("wishes/wish.html", wish = w, user = current_user, wishAuthor = wishAuthor)
 
-@app.route("/wishes/<wish_id>/", methods=["POST"])
+@app.route("/wishes/a/<wish_id>/", methods=["POST"])
 @login_required
 def wishes_set_approved(wish_id):
+
+    print("\nDEBUG PRINT: SET APPROVED\n")
+
     w = Wish.query.get(wish_id)
-
-    """
-    getName = ("SELECT Wish.name FROM Wish WHERE Wish.id = " + wish_id + ";")
-    data = str(db.engine.execute(getName))
-    res = []
-    for row in data:
-        res.append({"a: ":row[0]})
-
-    for row in res:
-        print(row)
-
-    apu = "pls help"
-    print("\nSET APPROVED " + apu + "\n\n")
-    """
     w.approved = True
-    # TODO: Tsekkaa "done" -> wish/equipment request approved?
     db.session().commit()
 
     return redirect(url_for("wishes_index"))
+
+@app.route("/wishes/ua/<wish_id>/", methods=["POST"])
+@login_required
+def wishes_undo_approved(wish_id):
+
+    print("\nDEBUG PRINT: UNDO APPROVED\n")
+
+    w = Wish.query.get(wish_id)
+    w.approved = False
+    db.session().commit()
+
+    print("ree")
+
+    return redirect(url_for("wishes_index"))
+
 
 # TODO: add button to mark wishes as fulfilled
 """def wishes_set_fulfilled(wish_id):

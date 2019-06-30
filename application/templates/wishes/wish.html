@@ -22,14 +22,23 @@
       </span>
       <!--td>{{ wish.fulfilled }}</td-->
       <span class="wishButtons">
-        <form method="POST" action="{{ url_for('wishes_set_approved', wish_id=wish.id) }}">
-          <input class="btn" type="submit" value="Approve!"/>
-        </form>
+        {% if not wish.approved %}
+          <form method="POST" action="{{ url_for('wishes_set_approved', wish_id=wish.id) }}">
+            <input class="btn btn-success" type="submit" value="Approve!"/>
+          </form>
+        {% else %}
+          <form method="POST" action="{{ url_for('wishes_undo_approved', wish_id=wish.id) }}">
+            <input class="btn btn-warning" type="submit" value="Undo approve"/>
+          </form>
+        {% endif %}
 
         {% if current_user.id == wish.account_id or current_user.admin == 1 %}
           <a class="btn btn-primary" href="{{url_for('wishes_edit', wish_id=wish_id) }}">Edit wish</a>
         {% endif %}
-      </span>
+
+        <form method="POST" action="{{ url_for('wishes_delete', wish_id=wish.id) }}">
+          <input class="btn btn-danger" type="submit" value="DELETE"/>
+        </form>
       <!-- TODO: add button to mark wishes as fulfilled -->
     </span>
   </div>
